@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+:root {
+  --font-geist-sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-geist-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color-scheme: light;
+  --color-gray-50: #f7f5f1;
+  --color-gray-100: #f1eee8;
+  --color-gray-200: #e4ded6;
+  --color-gray-300: #d1c8be;
+  --color-gray-400: #afa69b;
+  --color-gray-500: #8b8379;
+  --color-gray-600: #6c655d;
+  --color-gray-700: #4f4942;
+  --color-gray-800: #302c27;
+  --color-gray-900: #1f1b17;
+  --color-gray-950: #151310;
+
+  --background: var(--color-gray-50);
+  --foreground: var(--color-gray-900);
+  --azure-blue: #2f6fca;
+  --azure-blue-hover: #285eb0;
+  --azure-blue-light: #e8eefb;
+  --azure-blue-ring: #9ab5e2;
+  --azure-blue-text: var(--azure-blue);
+  --azure-blue-text-hover: var(--azure-blue-hover);
+  --button-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+  --button-shadow-active: 0 4px 10px rgba(15, 23, 42, 0.16);
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: var(--color-gray-300);
+  --scrollbar-thumb-hover: var(--color-gray-400);
+  --chat-panel-bg: #f8f6f2;
+  --chat-row-hover-bg: #f1ece3;
+  --chat-row-selected-bg: #ebe5da;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-azure: var(--azure-blue);
+  --color-azure-hover: var(--azure-blue-hover);
+  --color-azure-light: var(--azure-blue-light);
+  --color-azure-ring: var(--azure-blue-ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-gray-50: #22201c;
+    --color-gray-100: #24221e;
+    --color-gray-200: #262420;
+    --color-gray-300: #272521;
+    --color-gray-400: #4d4a42;
+    --color-gray-500: #847f71;
+    --color-gray-600: #9c988b;
+    --color-gray-700: #b9b6ac;
+    --color-gray-800: #d5d3cd;
+    --color-gray-900: #ecebe9;
+    --color-gray-950: #f6f5f4;
+
+    --azure-blue: #3d6ab3;
+    --azure-blue-hover: #345c9c;
+    --azure-blue-light: #d6e3fa;
+    --azure-blue-ring: #7f9fd6;
+    --azure-blue-text: #89aee8;
+    --azure-blue-text-hover: #a2c0ef;
+    --color-azure: var(--azure-blue);
+    --color-azure-hover: var(--azure-blue-hover);
+    --color-azure-light: var(--azure-blue-light);
+    --color-azure-ring: var(--azure-blue-ring);
+    --button-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    --button-shadow-active: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --scrollbar-thumb: var(--color-gray-400);
+    --scrollbar-thumb-hover: var(--color-gray-500);
+    --chat-panel-bg: var(--color-gray-300);
+    --chat-row-hover-bg: #333029;
+    --chat-row-selected-bg: #3c3831;
+
+    --color-red-50: #2f0e11;
+    --color-red-100: #3f1217;
+    --color-red-200: #57191f;
+    --color-red-300: #77222b;
+    --color-red-400: #9e2e39;
+    --color-red-500: #c63947;
+    --color-red-600: #d1616c;
+    --color-red-700: #dd8891;
+    --color-red-800: #e8b0b6;
+    --color-red-900: #f1d0d3;
+    --color-red-950: #f8e7e9;
+  }
+
+  .bg-white {
+    background-color: var(--color-gray-300);
+  }
+
+  button.border-gray-100,
+  button.border-gray-200,
+  button.border-gray-300 {
+    border-color: var(--color-gray-400);
+  }
+
+  @media (hover: hover) {
+    button.border-gray-100:hover,
+    button.border-gray-200:hover,
+    button.border-gray-300:hover {
+      border-color: var(--color-gray-500);
+    }
+  }
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Slim scrollbar utility */
+.scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.scrollbar-slim::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-slim::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.scrollbar-slim::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 999px;
+}
+
+.scrollbar-slim::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* Azure Blue utility classes */
+.bg-azure {
+  background-color: var(--azure-blue);
+}
+.bg-chat-panel {
+  background-color: var(--chat-panel-bg);
+}
+.chat-row {
+  transition: background-color 160ms ease;
+}
+.chat-row:hover {
+  background-color: var(--chat-row-hover-bg);
+}
+.chat-row:focus-visible {
+  background-color: var(--chat-row-hover-bg);
+  outline: none;
+}
+.chat-row-selected,
+.chat-row-selected:hover {
+  background-color: var(--chat-row-selected-bg);
+}
+.bg-azure-hover:hover {
+  background-color: var(--azure-blue-hover);
+}
+.bg-azure-light {
+  background-color: var(--azure-blue-light);
+}
+.text-azure {
+  color: var(--azure-blue-text);
+}
+.text-azure-hover:hover {
+  color: var(--azure-blue-text-hover);
+}
+.border-azure {
+  border-color: var(--azure-blue);
+}
+.ring-azure {
+  --tw-ring-color: var(--azure-blue-ring);
+}
+.focus\:border-azure:focus {
+  border-color: var(--azure-blue);
+}
+.focus\:ring-azure:focus {
+  --tw-ring-color: var(--azure-blue-ring);
+}
+
+input.border-gray-200,
+input.border-gray-300,
+input.border-gray-400,
+textarea.border-gray-200,
+textarea.border-gray-300,
+textarea.border-gray-400,
+select.border-gray-200,
+select.border-gray-300,
+select.border-gray-400 {
+  border-color: transparent;
+  background-color: var(--color-gray-100);
+}
+
+@media (prefers-color-scheme: dark) {
+  input.border-gray-200,
+  input.border-gray-300,
+  input.border-gray-400,
+  textarea.border-gray-200,
+  textarea.border-gray-300,
+  textarea.border-gray-400,
+  select.border-gray-200,
+  select.border-gray-300,
+  select.border-gray-400 {
+    background-color: var(--color-gray-200);
+  }
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+@media (hover: hover) {
+  button:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):hover,
+  input[type="button"]:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):hover,
+  input[type="submit"]:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):hover,
+  input[type="reset"]:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):hover {
+    box-shadow: var(--button-shadow);
+    transform: translateY(-1px);
+  }
+
+  button:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):active,
+  input[type="button"]:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):active,
+  input[type="submit"]:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):active,
+  input[type="reset"]:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):active {
+    box-shadow: var(--button-shadow-active);
+    transform: translateY(0);
+  }
+
+  button:not(:disabled):is([class*="bg-"], [class*="border"], [class*="shadow"], [class*="ring"]):hover {
+    filter: brightness(0.98);
+  }
+}

@@ -1,0 +1,2 @@
+-- Placeholder no-op migration.
+-- Kept to match remote migration history entry `20260129164053`.
